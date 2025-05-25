@@ -4,8 +4,10 @@ import rutas from "./interfaces/rutas/empresas.routes";
 import { conexionDB } from "./infrastructura/db/mongodb";
 import "reflect-metadata";
 import { configurarSwagger } from "./infrastructura/config/swagger";
+import morgan from 'morgan';
 const app = express();
 const puerto = process.env.PORT || 8088;
+app.use(morgan('dev'))
 app.use(express.json());
 configurarSwagger(app);
 app.use(rutas);
