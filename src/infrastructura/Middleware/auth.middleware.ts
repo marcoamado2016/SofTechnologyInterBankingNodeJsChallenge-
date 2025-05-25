@@ -17,5 +17,4 @@ export const middlewareVerifyToken = (req: any, res: any, next: any) => {
         return res.status(HTTP_CODES.FORBIDDEN).json({ error: "Token inválido o expirado" });
 
     }
-
 }
