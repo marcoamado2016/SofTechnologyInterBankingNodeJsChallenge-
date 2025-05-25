@@ -1,7 +1,6 @@
-import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken"
 import { HTTP_CODES } from "../../dominio/enum/http.codes";
-export const middleware = (req: any, res: any, next: any) => {
+export const middlewareVerifyToken = (req: any, res: any, next: any) => {
     let SECRET_KEY = process.env.SECRET_KEY;
     const authHeader = req.headers.authorization;
     if (!authHeader?.startsWith("Bearer ")) {
@@ -12,7 +11,8 @@ export const middleware = (req: any, res: any, next: any) => {
     try {
         const decoded = jwt.verify(token, SECRET_KEY as string);
         (req as any).user = decoded;
-        return next();
+         next();
+         return;
     } catch (error) {
         return res.status(HTTP_CODES.FORBIDDEN).json({ error: "Token inválido o expirado" });
 

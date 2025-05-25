@@ -1,7 +1,7 @@
 import { ISchemaUsuario } from "../../infrastructura/repositorio/schema/usuarioModel";
 import { Respuesta } from "../entidad/respuesta";
 
-export interface UsuarioReposiotrio {
-    crearUsuario(newUsuario: ISchemaUsuario): Promise<Respuesta>;
-    findOneUsuario(usuario:string):Promise<Respuesta>;
+export interface IUsuarioReposiotrio {
+    crearUsuarioRepositorio(newUsuario: ISchemaUsuario): Promise<Respuesta>;
+    findOneUsuarioRepositorio(usuario:string):Promise<Respuesta>;
 }
